@@ -64,10 +64,20 @@ app.get('/api/productos/:id', (req, res)=>
 	if (!producto) res.status(404).send('Id del producto no existe.')
 	res.send(producto);
 });
+
+app.delete('/api/productos/:id',(req, res) =>
+{
+	const producto = productos.find(c => c.id === parseInt(req.params.id));
+	if (!producto) res.status(404).send('Id del producto no existe.')
+
+	const index = productos.indexOf(producto);
+	productos.splice(index, 1);
+
+	res.send(producto);
+});
 //port selecction
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`))
-
 
 function validacionDeProducto(producto)
 {
