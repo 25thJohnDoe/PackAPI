@@ -1,9 +1,11 @@
 const Joi = require('joi');
 const express = require('express');
 const app = express();
-
+const mongoose = require('mongoose');
 app.use(express.json());
 
+const mongoDB = 'mongodb://127.0.0.1/productos';
+mongoose.connect(mongoDB);
 const productos = 
 [
 	{id: 1, name: 'Cocacola', precio: 8},
