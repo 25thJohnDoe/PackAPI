@@ -1,12 +1,16 @@
 const Joi = require('joi');
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient; 
+
 app.use(express.json());
 
-const mongoDB = 'mongodb://127.0.0.1/productos';
-mongoose.connect(mongoDB);
-const productos = 
+const mongoDB = 'mongodb://WassimL:otiterol2507@ds215709.mlab.com:15709/db_productos';
+MongoClient.connect(mongoDB , function(err, db) {
+     if(!err) { 
+         console.log("Conectado"); 
+      } 
+});const productos = 
 [
 	{id: 1, name: 'Cocacola', precio: 8},
 	{id: 2, name: 'Corona', precio: 14},
